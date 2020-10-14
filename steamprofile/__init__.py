@@ -1,1 +1,1 @@
-from steamprofile import *
+from .steamprofile import *

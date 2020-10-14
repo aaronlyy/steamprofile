@@ -3,13 +3,13 @@ from distutils.core import setup
 setup(
   name = 'steamprofile',
   packages = ['steamprofile'],
-  version = '0.1',
+  version = '0.1.1',
   license='MIT',
   description = 'Gather Information about Profiles on Steam.',
   author = 'Aaron Levi Can (aaronlyy)',
   author_email = 'aaronlevican@gmail.com',
   url = 'https://github.com/aaronlyy/steamprofile',
-  download_url = 'https://github.com/aaronlyy/steamprofile/archive/v_01.tar.gz',
+  download_url = 'https://github.com/aaronlyy/steamprofile/archive/v_011.tar.gz',
   keywords = ['steam', 'steamcommunity'],
   install_requires=[
         "pyfiglet"
