@@ -1,8 +1,15 @@
 import requests
 import xml.etree.ElementTree as et
-import json
 
 def get_profile(profile_url):
+    """Request a new Profile
+
+    Args:
+        profile_url (string): URL of a Steamprofile
+
+    Returns:
+        Profile: Profile object containing all information
+    """
     # request xml as string
     res = requests.get(f"{profile_url}?xml=1")
     # parse string to xml tree
@@ -16,15 +23,18 @@ def get_profile(profile_url):
             break
     return Profile(d)
 
+
 class Profile:
-    def __init__(self, dictionary):
-        self.dictionary = dictionary
+    """Profile Class containing information about a Steamprofile
+    """
+    def __init__(self, info):
+        self.info = info
 
     def json(self):
-        return self.dictionary
+        return self.info
 
     def __getattr__(self, attr):
-        if attr in self.dictionary.keys():
-            return self.dictionary[attr]
+        if attr in self.info.keys():
+            return self.info[attr]
         else:
             return None
