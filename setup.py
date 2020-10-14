@@ -12,7 +12,8 @@ setup(
   download_url = 'https://github.com/aaronlyy/steamprofile/archive/v_011.tar.gz',
   keywords = ['steam', 'steamcommunity'],
   install_requires=[
-        "pyfiglet"
+        "requests",
+        "unidecode"
       ],
   classifiers=[
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package

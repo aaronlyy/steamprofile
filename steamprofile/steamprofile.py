@@ -1,5 +1,7 @@
 import requests
 import xml.etree.ElementTree as et
+import json
+from unidecode import unidecode
 
 def get_profile(profile_url):
     """Request a new Profile
@@ -18,7 +20,10 @@ def get_profile(profile_url):
     d = {}
     for e in tree.iter():
         if e.tag != "groups":
-            d[e.tag] = e.text
+            if e.text !=  None:
+                d[e.tag] = unidecode(e.text)
+            else:
+                d[e.tag] = "None"
         else:
             break
     return Profile(d)
@@ -38,3 +43,9 @@ class Profile:
             return self.info[attr]
         else:
             return None
+
+
+if __name__ == "__main__":
+    p = get_profile("https://steamcommunity.com/id/guccigirl")
+    for k, v in p.json().items():
+        print(k, v)
