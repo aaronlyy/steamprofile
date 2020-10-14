@@ -25,7 +25,7 @@ def get_profile(profile_url):
 
 
 class Profile:
-    """Profile Class containing information about a Steamprofile
+    """Profile Class containing information about a Steamprofile.
     """
     def __init__(self, info):
         self.info = info
