@@ -1,15 +1,30 @@
 import requests
+import xml.etree.ElementTree as et
+import json
 
-def get_profile(profile_url, format="json"):
-    """request info about a profile
+def get_profile(profile_url):
+    # request xml as string
+    res = requests.get(f"{profile_url}?xml=1")
+    # parse string to xml tree
+    tree = et.fromstring(res.text)
+    # parse xml to dictionary
+    d = {}
+    for e in tree.iter():
+        if e.tag != "groups":
+            d[e.tag] = e.text
+        else:
+            break
+    return Profile(d)
 
-    Args:
-        profile_url (str): url of a steamprofile
-    """
+class Profile:
+    def __init__(self, dictionary):
+        self.dictionary = dictionary
 
-    # request xml of a user
-    res = requests.get(f"{profile_url}/?xml=1")
+    def json(self):
+        return self.dictionary
 
-    print(res.text)
-
-get_profile("https://steamcommunity.com/id/speedkonsum")
+    def __getattr__(self, attr):
+        if attr in self.dictionary.keys():
+            return self.dictionary[attr]
+        else:
+            return None
