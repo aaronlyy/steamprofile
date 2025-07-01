@@ -1,3 +1,6 @@
-- remove license txt
 - add own profile class file
 - cleanup profile wrapper
+- update readme and add more examples
+- add feature to download avatars directly
+- add proxy support
+- add cli entrypoint for terminal usage
