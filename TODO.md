@@ -1,0 +1,3 @@
+- remove license txt
+- add own profile class file
+- cleanup profile wrapper

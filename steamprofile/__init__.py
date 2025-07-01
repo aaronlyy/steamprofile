@@ -1,1 +1,0 @@
-from .steamprofile import *
